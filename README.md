@@ -1,4 +1,10 @@
-# Exploratory-Data-Analysis
-UOS 2019, Exploratory Data Analysis
+## 🌴 통계학 공부 노트
 
-2019년 오타 아님
+
+## Contents
+
+|       Semester       | Lecture |
+|:----------------:|:----------------------------------------:|
+| 2020-2 |   Advanced Statistical Programming |
+| 2020-2 |   Multivariate Statistical Analysis |
+| 2020-2 |   Regression Analysis II |

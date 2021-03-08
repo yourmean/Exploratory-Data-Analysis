@@ -5,7 +5,7 @@
 
 |       Semester       | Lecture(ENG) | Lecture(KOR) |
 |:----------------:|:----------------------------------------:|:----------------------------------------:|
-| 2019-12 |   Statistical Computing | 통계계산 |
+| 2019-2 |   Statistical Computing | 통계계산 |
 | 2020-1 |   Machine Learning and Lab | 기계학습 및 실습 |
 | 2020-2 |   Advanced Statistical Programming | 고급 통계 프로그래밍 |
 | 2020-2 |   Multivariate Statistical Analysis | 다변량 통계학

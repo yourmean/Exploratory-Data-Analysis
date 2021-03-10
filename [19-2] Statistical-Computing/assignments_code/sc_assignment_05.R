@@ -1,24 +1,24 @@
-# Q1 ------------------------------------
+# Q1 ------------------------------------ 
 
-# ¸ğÀÇ½ÇÇè
+# ëª¨ì˜ì‹¤í—˜
 set.seed(2020)
 
-# Ç¥ÁØ¶óÇÃ¶ó½º ºĞÆ÷¸¦ µû¸£´Â ³­¼ö »ı¼º (by ¿ªº¯È¯¹ı)
+# í‘œì¤€ë¼í”Œë¼ìŠ¤ ë¶„í¬ë¥¼ ë”°ë¥´ëŠ” ë‚œìˆ˜ ìƒì„± (by ì—­ë³€í™˜ë²•)
 ran = function(N){
-  n = N/2 # µÎ °³ÀÇ ±¸°£¿¡ ´ëÇØ Àı¹İ¾¿ »ı¼º
-  u1 = runif(n, 0, 1/2) # U(0, 1/2) ¿¡¼­ »ı¼º
-  u2 = runif(n, 1/2, 1) # U(1/2, 1) ¿¡¼­ »ı¼º
-  x1 = log(2 * u1) # x < 0 ºÎºĞ »ı¼º
-  x2 = -log(2 - 2 * u2) # x >= 0 ºÎºĞ »ı¼º
+  n = N/2 # ë‘ ê°œì˜ êµ¬ê°„ì— ëŒ€í•´ ì ˆë°˜ì”© ìƒì„±
+  u1 = runif(n, 0, 1/2) # U(0, 1/2) ì—ì„œ ìƒì„±
+  u2 = runif(n, 1/2, 1) # U(1/2, 1) ì—ì„œ ìƒì„±
+  x1 = log(2 * u1) # x < 0 ë¶€ë¶„ ìƒì„±
+  x2 = -log(2 - 2 * u2) # x >= 0 ë¶€ë¶„ ìƒì„±
   return(c(x1, x2))
 }
 
-x = ran(N = 1000) # Ç¥ÁØ ¶óÇÃ¶ó½ººĞÆ÷¸¦ µû¸£´Â ³­¼ö
+x = ran(N = 1000) # í‘œì¤€ ë¼í”Œë¼ìŠ¤ë¶„í¬ë¥¼ ë”°ë¥´ëŠ” ë‚œìˆ˜
 
-# È÷½ºÅä±×·¥À¸·Î ±×¸° ¹ĞµµÇÔ¼ö(°æÇèÀû ºĞÆ÷)
+# íˆìŠ¤í† ê·¸ë¨ìœ¼ë¡œ ê·¸ë¦° ë°€ë„í•¨ìˆ˜(ê²½í—˜ì  ë¶„í¬)
 hist(x, breaks = 100, probability = TRUE, main = "empirical laplace(0, 1)")
 
-# curve·Î ±×¸° ¹ĞµµÇÔ¼ö(ÀÌ·ĞÀû ºĞÆ÷)
+# curveë¡œ ê·¸ë¦° ë°€ë„í•¨ìˆ˜(ì´ë¡ ì  ë¶„í¬)
 fx = function(x){
   fx = ifelse(x >= 0, exp(-x) / 2, exp(x) / 2)
   return(fx)
@@ -39,14 +39,14 @@ qqmath( ~ x, distribution = function(x){qlaplace(x)},
 
 # Q2 ------------------------------------
 
-# ¸ğÀÇ½ÇÇè
+# ëª¨ì˜ì‹¤í—˜
 #library(dplyr)
 set.seed(2020)
 N = 1000
 u = runif(N)
 x = cut(u, breaks = c(0, 0.1, 0.3, 0.5, 0.7, 1), include.lowest = TRUE) %>% as.numeric()
 
-# »ó´ëµµ¼ö Ç¥
+# ìƒëŒ€ë„ìˆ˜ í‘œ
 table(x) / N
 ## x
 ## 1 2 3 4 5
@@ -66,10 +66,10 @@ ran_cauchy = function(N, location, scale){ # ~ cauchy(location, scale)
   return(scale*Y+location)
 }
 ran_x = ran_cauchy(N = 1000, location = 0, scale = 1) # ~ cauchy(0, 1)
-# °æÇèÀû ºĞÆ÷
+# ê²½í—˜ì  ë¶„í¬
 hist(ran_x[-10 < ran_x & ran_x < 10], breaks = 100, xlim = c(-10, 10),
      prob = TRUE, main = "empirical cauchy(0, 1)", xlab = "x")
-# ÀÌ·ĞÀû ºĞÆ÷
+# ì´ë¡ ì  ë¶„í¬
 x = seq(-10, 10, length = 100)
 curve(dcauchy(x), from = -10, to = 10, lwd = 2, col = "red", add = TRUE)
 
@@ -79,12 +79,12 @@ curve(dcauchy(x), from = -10, to = 10, lwd = 2, col = "red", add = TRUE)
 
 # Q4 ------------------------------------
 
-# ¸ğÀÇ½ÇÇè
+# ëª¨ì˜ì‹¤í—˜
 
-## Box - Miller º¯È¯
+## Box - Miller ë³€í™˜
 box_miller = function(N){
   n = N/2
-  U1 = runif(n) # ¼­·Î µ¶¸³ÀÎ ±ÕÀÏºĞÆ÷
+  U1 = runif(n) # ì„œë¡œ ë…ë¦½ì¸ ê· ì¼ë¶„í¬
   U2 = runif(n)
   Z1 = sqrt(-2 * log(U1)) * cos(2 * pi * U2)
   Z2 = sqrt(-2 * log(U1)) * sin(2 * pi * U2)
@@ -95,7 +95,7 @@ system.time(box_miller(N = 100000))
 ## 0.02 0.00 0.01
 
 
-## ±ØÁÂÇ¥¿¡ ÀÇÇÑ ¹æ¹ı
+## ê·¹ì¢Œí‘œì— ì˜í•œ ë°©ë²•
 polar = function(N){
   n = N/2
   V1 = runif(n, -1, 1)

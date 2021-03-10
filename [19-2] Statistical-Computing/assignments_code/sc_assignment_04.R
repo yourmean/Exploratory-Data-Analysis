@@ -1,6 +1,6 @@
-# Q1 ------------------------------------
+# Q1 ------------------------------------ 
 
-# ½Â»êÇÕµ¿¹ı ÇÔ¼ö¿¡¼­ U[0,1] µû¸£´Â ³­¼ö 100°³ »ı¼º
+# ìŠ¹ì‚°í•©ë™ë²• í•¨ìˆ˜ì—ì„œ U[0,1] ë”°ë¥´ëŠ” ë‚œìˆ˜ 100ê°œ ìƒì„±
 random_uni = function(n, seed){
   for(i in 1:(n-1)){
     seed[i+1] = ((16807*seed[i]) %% 2147483647)
@@ -33,18 +33,18 @@ ran_seed
 
 
 
-# (a) 1. Ä«ÀÌÁ¦°ö ÀûÇÕµµ °ËÁ¤
+# (a) 1. ì¹´ì´ì œê³± ì í•©ë„ ê²€ì •
 k = 11
 N = 100
-range = seq(0, 1, length = k) # [0, 1]À» 10µîºĞ
-n = as.numeric(table(cut(ran_seed, range))) # ±¸°£º°·Î ³­¼öÀÇ °¹¼ö ¼¼±â
+range = seq(0, 1, length = k) # [0, 1]ì„ 10ë“±ë¶„
+n = as.numeric(table(cut(ran_seed, range))) # êµ¬ê°„ë³„ë¡œ ë‚œìˆ˜ì˜ ê°¯ìˆ˜ ì„¸ê¸°
 W = ((k-1)/N) * sum((n-(N/(k-1)))^2)
 pchisq(W, df = k-2, lower.tail = FALSE) # p-value
 U[0, 1]
 ui
 ## [1] 0.1372824
 
-# (a) 2. Äİ¸ğ°í·ÎÇÁ-½º¹Ì¸£³ëÇÁ ÀûÇÕµµ °ËÁ¤(by ks.test)
+# (a) 2. ì½œëª¨ê³ ë¡œí”„-ìŠ¤ë¯¸ë¥´ë…¸í”„ ì í•©ë„ ê²€ì •(by ks.test)
 u = runif(100)
 ks.test(ran_seed, u)
 ##
@@ -56,7 +56,7 @@ ks.test(ran_seed, u)
 # p-value > 0.05
 
 
-# (b) µ¶¸³¼º °ËÁ¤: ·± °ËÁ¤
+# (b) ë…ë¦½ì„± ê²€ì •: ëŸ° ê²€ì •
 library(snpar)
 runs.test(ran_seed)
 ##
@@ -75,15 +75,15 @@ runs.test(ran_seed)
 
 # Q2 ------------------------------------
 set.seed(10)
-N = 1000 # ¹İº¹ ¼ö
+N = 1000 # ë°˜ë³µ ìˆ˜
 p = 6
 Y_sample = sample(c(0, 1), N * p, prob = c(0.8, 0.2), replace = T)
 Y = matrix(Y_sample, nrow = N, ncol = p)
 
-mean(rowSums(Y) >= 1) # °æÇèÀû È®·ü
+mean(rowSums(Y) >= 1) # ê²½í—˜ì  í™•ë¥ 
 ## [1] 0.746
 
-1-0.8^6 # ÀÌ·ĞÀû È®·ü
+1-0.8^6 # ì´ë¡ ì  í™•ë¥ 
 ## [1] 0.737856
 
 
@@ -102,11 +102,11 @@ Buffon = function(n, lofneedle, distance)
   return(prob)
 }
 
-# °æÇèÀû È®·ü
+# ê²½í—˜ì  í™•ë¥ 
 N = c(10, 50, 100, 1000, 5000)
 est_p = unlist(lapply(N, Buffon, lofneedle = 15, distance = 20))
 
-# ÀÌ·ĞÀû È®·ü
+# ì´ë¡ ì  í™•ë¥ 
 theo_p = 2 * 15 / (3.14 * 20)
 theo_p
 ## [1] 0.477707

@@ -1,2 +1,1 @@
-Advanced Statistical Programming, Autumn Semester in 2020
-
+## 실험계획법
